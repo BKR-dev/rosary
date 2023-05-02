@@ -6,7 +6,11 @@ import (
 )
 
 type Prayer struct {
+	Language     string `json:"Lang"`
 	Creed        string `json:"Creed"`
+	OurFather    string `json:"OurFather"`
+	GloryBe      string `json:"GloryBe"`
+	FatimaPrayer string `json:"FatimaPrayer"`
 	FirstDecade  string `json:"FirstDecade"`
 	SecondDecade string `json:"SecondDecade"`
 	ThirdDecade  string `json:"ThirdDecade"`
@@ -21,6 +25,8 @@ type Rosary struct {
 	Decades  int      `json:"Decades"`
 	Prayers  []Prayer `json:"Prayers"`
 }
+
+
 
 func getWeekday() string {
 	return fmt.Sprint(time.Now().Weekday())

@@ -1,6 +1,7 @@
 package server
 
 import (
+	"html/template"
 	"net/http"
 	"time"
 
@@ -30,6 +31,24 @@ func StartServer() error {
 	return nil
 }
 
-func rootHandler(w http.ResponseWriter, r *http.Request) {
+type PageData struct {
+	PageTitle  string
+	PageBody   string
+	PageFooter string
+}
 
+func rootHandler(w http.ResponseWriter, r *http.Request) {
+	pageData := PageData{
+		PageTitle:  "Rosary",
+		PageBody:   "Body",
+		PageFooter: "Footer",
+	}
+	templ, err := template.ParseFiles("/workspaces/rosary/static/layout.html")
+	if err != nil {
+		logrus.Error(err)
+	}
+	err = templ.Execute(w, pageData)
+	if err != nil {
+		logrus.Error(err)
+	}
 }

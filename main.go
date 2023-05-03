@@ -9,5 +9,9 @@ import (
 func main() {
 
 	logrus.Info("Starting Server")
-	server.StartServer()
+	err := server.StartServer()
+	if err != nil {
+		logrus.Errorf("Server could not be started: %v\n", err)
+	}
+
 }

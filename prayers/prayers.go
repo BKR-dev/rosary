@@ -5,6 +5,13 @@ import (
 	"time"
 )
 
+func DailyRosary() (string, error) {
+	var rosary string
+	weekday := time.Now().Weekday()
+	fmt.Println(weekday)
+	return rosary, nil
+}
+
 var dailyMysteryEN = map[string]string{
 	"lang":   "en",
 	"sunday": "glorious",
@@ -45,8 +52,40 @@ type Rosary struct {
 	Prayers  []Prayer `json:"Prayers"`
 }
 
-func getWeekday() string {
-	return fmt.Sprint(time.Now().Weekday())
+type Part struct {
+	Name     string `json:"Name"`
+	Language string `json:"Lang"`
+	Prayer   string `json:"Prayer"`
+}
+
+var OurFather = map[string]string{
+	"lang":   "de",
+	"prayer": "Vater unser im Himmel, geheiligt werde dein Name.\nDein Reich komme.\nDein Wille geschehe,\nwie im Himmel so auf Erden.\nUnser tägliches Brot gib uns heute.\nUnd vergib uns unsere Schuld,\nwie auch wir vergeben unsern Schuldigern.\nUnd führe uns nicht in Versuchung,\nsondern erlöse uns von dem Bösen.\nDenn dein ist das Reich und die Kraft\nund die Herrlichkeit in Ewigkeit.",
+}
+
+var GloryBe = map[string]string{
+	"lang":   "de",
+	"prayer": "Ehre sei dem Vater und dem Sohn und dem Heiligen Geist.\nWie im Anfang, so auch jetzt und allezeit und in Ewigkeit.",
+}
+
+var FatimaPrayer = map[string]string{
+	"lang":   "de",
+	"prayer": "O mein Jesus, verzeih' uns unsere Sünden. Bewahre uns vor dem Feuer der Hölle. Führe alle Seelen in den Himmel, besonders jene, die Deiner Barmherzigkeit am meisten bedürfen.\nAmen.",
+}
+
+var AveMaria = map[string]string{
+	"lang":   "de",
+	"prayer": "Gegrüßet seist du, Maria, voll der Gnade,\nder Herr ist mit dir.\nDu bist gebenedeit unter den Frauen,\nund gebenedeit ist die Frucht deines Leibes,\nJesus.(Geheimnis)\nHeilige Maria, Mutter Gottes, bitte für uns Sünder jetzt und in der Stunde unseres Todes.\nAmen.",
+}
+
+var SalveRegina = map[string]string{
+	"lang":   "de",
+	"prayer": "Sei gegrüßt, o Königin,\nMutter der Barmherzigkeit,\nunser Leben, unsre Wonne\nund unsre Hoffnung, sei gegrüßt!\nZu dir rufen wir\nverbannte Kinder Evas.\nZu dir seufzen wir trauernd und weinend\nin diesem Tal der Tränen.\nWohlan denn, unsre Fürsprecherin,\nwende deine barmherzigen Augen uns zu,\nund nach diesem Elend zeige uns Jesus,\ndie gebenedeite Frucht deines Leibes!\nO gütige, o milde, o süße Jungfrau Maria!",
+}
+
+var Creed = map[string]string{
+	"lang":   "de",
+	"prayer": "Ich glaube an Gott, den Vater, den Allmächtigen,\nden Schöpfer des Himmels und der Erde,\nund an Jesus Christus, seinen eingeborenen Sohn, unsern Herrn,\nempfangen durch den Heiligen Geist, geboren von der Jungfrau Maria,\ngelitten unter Pontius Pilatus,\ngekreuzigt, gestorben und begraben,\nhinabgestiegen in das Reich des Todes, am dritten Tage auferstanden von den Toten,\naufgefahren in den Himmel;\ner sitzt zur Rechten Gottes, des allmächtigen Vaters;\nvon dort wird er kommen, zu richten die Lebenden und die Toten.\nIch glaube an den Heiligen Geist,\ndie heilige katholische Kirche,\nGemeinschaft der Heiligen,\nVergebung der Sünden,\nAuferstehung der Toten\nund das ewige Leben.",
 }
 
 // Glorreichen Geheimnisse Sonntag / Mittwoch

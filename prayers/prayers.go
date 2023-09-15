@@ -2,12 +2,12 @@ package prayers
 
 import (
 	"fmt"
-	"time"
+	"rosary/util"
 )
 
 func DailyRosary() (string, error) {
 	var rosary string
-	weekday := time.Now().Weekday()
+	weekday := util.DayOfWeek()
 	fmt.Println(weekday)
 	return rosary, nil
 }
